@@ -14,6 +14,7 @@ public class PlayerCtrl : MonoBehaviour
     private Vector3 forward;
     private int layMask = 1 << 8;
     private int stage = 1;
+    private float GaugeTimer;
     
     // Start is called before the first frame update
     void Start()
@@ -29,13 +30,17 @@ public class PlayerCtrl : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        forward = mainCam.transform.TransformDirection(Vector3.forward) * 20;
-        if (Physics.Raycast(mainCam.transform.position, forward, out hit,layMask))
+        CursorGaugeImage.fillAmount = GaugeTimer;
+        forward = mainCam.transform.TransformDirection(Vector3.forward);
+        if (Physics.Raycast(mainCam.transform.position, forward, out hit,10.0f)&&hit.transform.gameObject.tag=="door")
         {
-            Debug.Log(hit.transform.gameObject.tag);
+            GaugeTimer += 1.0f / 3.0f * Time.deltaTime;
         }
-        
-        Debug.DrawRay(mainCam.transform.position, forward, Color.red);
+        else
+        {
+            GaugeTimer=0.0f;
+        }
+
         if (Input.GetMouseButton(0))
         {
             MoveForward();
