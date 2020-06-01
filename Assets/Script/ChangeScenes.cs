@@ -21,4 +21,12 @@ public class ChangeScenes : MonoBehaviour
     {
         SceneManager.LoadScene(3, LoadSceneMode.Single);
     }
+    public void ChangeNormal()
+    {
+        SceneManager.LoadScene(2, LoadSceneMode.Single);
+    }
+    public void ChangeEasy()
+    {
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
+    }
 }

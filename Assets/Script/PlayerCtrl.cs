@@ -23,6 +23,7 @@ public class PlayerCtrl : MonoBehaviour
         audio_source = gameObject.AddComponent<AudioSource>();
         audio_source.clip = audioClip;
         audio_source.volume = 1.0f;
+        audio_source.loop = true;
         
     }
 
@@ -71,6 +72,9 @@ public class PlayerCtrl : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
+        if (collision.transform.tag != "door")
+        {
+            
+        }
     }
 }

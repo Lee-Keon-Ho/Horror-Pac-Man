@@ -30,7 +30,7 @@ public class Easy_PlayerCtrl : MonoBehaviour
             //head.transform.position = new Vector3(this.transform.position.x, 12.0f, this.transform.position.z);
             if (mainCam.transform.rotation.x <= 0.3f && mainCam.transform.rotation.x >= -0.3f)
             {
-                head.transform.Translate(mainCam.transform.forward * 0.015f);
+                head.transform.Translate(mainCam.transform.forward * 0.02f);
             }
         }
 
