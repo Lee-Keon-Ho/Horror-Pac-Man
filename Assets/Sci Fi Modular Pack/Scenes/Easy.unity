@@ -7408,6 +7408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   head: {fileID: 582204801}
   mainCam: {fileID: 189084129}
+  audioClip: {fileID: 8300000, guid: c687cb089e2d2ff4e911a1dd3c2e6468, type: 3}
 --- !u!1001 &584462161
 PrefabInstance:
   m_ObjectHideFlags: 0

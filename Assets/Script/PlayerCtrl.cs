@@ -30,6 +30,7 @@ public class PlayerCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //head.GetComponent<Rigidbody>().velocity = new Vector3(0, -1, 0);
         RaycastHit hit;
         CursorGaugeImage.fillAmount = GaugeTimer;
         forward = mainCam.transform.TransformDirection(Vector3.forward);
