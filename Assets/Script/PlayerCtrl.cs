@@ -8,11 +8,11 @@ public class PlayerCtrl : MonoBehaviour
 {
     public GameObject head;
     public GameObject mainCam;
+    public GameObject rain;
     public Image CursorGaugeImage;
     private AudioSource audio_source;
     public AudioClip audioClip;
     private Vector3 forward;
-    private int layMask = 1 << 8;
     private int stage = 1;
     private float GaugeTimer;
     
@@ -30,17 +30,40 @@ public class PlayerCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rain.transform.position = new Vector3(head.transform.position.x,160.0f,head.transform.position.z);
         //head.GetComponent<Rigidbody>().velocity = new Vector3(0, -1, 0);
         RaycastHit hit;
         CursorGaugeImage.fillAmount = GaugeTimer;
         forward = mainCam.transform.TransformDirection(Vector3.forward);
         if (Physics.Raycast(mainCam.transform.position, forward, out hit,10.0f)&&hit.transform.gameObject.tag=="door")
         {
-            GaugeTimer += 1.0f / 3.0f * Time.deltaTime;
+            GaugeTimer += 1.0f;
+
+            if (GaugeTimer >= 1.0f && Input.GetMouseButtonDown(0))
+            {
+                Destroy(hit.transform.gameObject);
+                stage++;
+            }
         }
         else
         {
             GaugeTimer=0.0f;
+        }
+
+        if (head.transform.position.z >= 120.0f)
+        {
+            if (head.transform.position.y >= 104.0f)
+            {
+                rain.SetActive(true);
+            }
+            else
+            {
+                rain.SetActive(false);
+            }
+        }
+        else
+        {
+            rain.SetActive(true);
         }
 
         if (Input.GetMouseButton(0))
@@ -60,15 +83,11 @@ public class PlayerCtrl : MonoBehaviour
 
     void MoveForward()
     {
-        if (stage == 1)
+        //head.transform.position = new Vector3(this.transform.position.x, 12.0f, this.transform.position.z);
+        if (mainCam.transform.rotation.x <= 0.3f && mainCam.transform.rotation.x >= -0.3f)
         {
-            //head.transform.position = new Vector3(this.transform.position.x, 12.0f, this.transform.position.z);
-            if (mainCam.transform.rotation.x <= 0.3f && mainCam.transform.rotation.x >= -0.3f)
-            {
-                head.transform.Translate(mainCam.transform.forward * 0.2f);
-            }
-        }
-        
+            head.transform.Translate(mainCam.transform.forward * 0.2f);
+        }    
     }
 
     private void OnCollisionEnter(Collision collision)
