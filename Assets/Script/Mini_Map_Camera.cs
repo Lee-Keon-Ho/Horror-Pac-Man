@@ -17,7 +17,7 @@ public class Mini_Map_Camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (camera.transform.rotation.eulerAngles.x > 80.0f && camera.transform.rotation.eulerAngles.x < 86.0f)
+        if (true/*camera.transform.rotation.eulerAngles.x > 80.0f && camera.transform.rotation.eulerAngles.x < 90.0f*/)
         {
             light.SetActive(true);
             map.SetActive(true);

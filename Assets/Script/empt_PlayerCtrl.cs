@@ -44,7 +44,6 @@ public class empt_PlayerCtrl : MonoBehaviour
         else
         {
             rain.transform.position = new Vector3(head.transform.position.x, 160.0f, head.transform.position.z);
-            //head.gameObject.transform.position = new Vector3(this.transform.position.x, 15.0f, this.transform.position.z);
 
             head.GetComponent<Rigidbody>().velocity = Vector3.zero;
             CursorGaugeImage.fillAmount = GaugeTimer;
@@ -86,7 +85,7 @@ public class empt_PlayerCtrl : MonoBehaviour
     {
         if (mainCam.transform.rotation.x <= 0.5f && mainCam.transform.rotation.x >= -0.5f)
         {
-            head.transform.Translate(mainCam.transform.forward * 0.2f);
+            head.transform.Translate(mainCam.transform.forward * 0.15f);
         }
     }
 
@@ -94,13 +93,7 @@ public class empt_PlayerCtrl : MonoBehaviour
     {
         if (collision.transform.tag == "Monster")
         {
-            StartCoroutine(scene());
+            SceneManager.LoadScene("End_Game", LoadSceneMode.Single);
         }
-    }
-
-    IEnumerator scene()
-    {
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("End_Game", LoadSceneMode.Single);
     }
 }

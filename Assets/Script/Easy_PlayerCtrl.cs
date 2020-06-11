@@ -17,6 +17,8 @@ public class Easy_PlayerCtrl : MonoBehaviour
     private float GaugeTimer;
     private int stage = 0;
     public Image CursorGaugeImage;
+    private Vector3 this_position;
+    private Vector3 this_rotate;
 
     // Start is called before the first frame update
     void Start()
