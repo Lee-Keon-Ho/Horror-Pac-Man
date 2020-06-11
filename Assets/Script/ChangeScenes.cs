@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScenes : MonoBehaviour
 {
+    public static string s;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,14 +20,17 @@ public class ChangeScenes : MonoBehaviour
 
     public void ChangeHard()
     {
-        SceneManager.LoadScene(4, LoadSceneMode.Single);
+        s = "empt";
+        SceneManager.LoadScene("Loding", LoadSceneMode.Single);
     }
     public void ChangeNormal()
     {
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
+        s = "Normal";
+        SceneManager.LoadScene("Loding", LoadSceneMode.Single);
     }
     public void ChangeEasy()
     {
-        SceneManager.LoadScene(3, LoadSceneMode.Single);
+        s = "Easy";
+        SceneManager.LoadScene("Loding", LoadSceneMode.Single);
     }
 }

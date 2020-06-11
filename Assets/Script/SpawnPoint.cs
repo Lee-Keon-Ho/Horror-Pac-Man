@@ -6,24 +6,24 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour
 {
     public GameObject[] spawnpoint = new GameObject[15];
-    public GameObject item;
-    private int count = 0;
+    public int max = 0;
+    public int arr_max = 0;
     private int random = 0; 
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < 15; i++)
+        for(int i = 0; i < max;)
         {
-            random = UnityEngine.Random.Range(0, 2);
-            if (random == 0)
+            random = UnityEngine.Random.Range(0, arr_max);
+            if (spawnpoint[random].activeSelf == true)
             {
-                count++;
-                Instantiate(item, spawnpoint[i].transform.position, Quaternion.identity);
+
             }
-            if (count > 4)
+            else
             {
-                break;
-            }
+                spawnpoint[random].SetActive(true);
+                i++;
+            }   
         }
     }
 
