@@ -10,6 +10,7 @@ public class Normal_PlayerCtrl : MonoBehaviour
     public GameObject mainCam;
     public GameObject[] monster = new GameObject[2];
     public GameObject clear;
+    public GameObject end_Game;
     private AudioSource audio_source;
     public AudioClip audioClip;
     private Vector3 forward;
@@ -90,7 +91,7 @@ public class Normal_PlayerCtrl : MonoBehaviour
     {
         if (mainCam.transform.rotation.x <= 0.3f && mainCam.transform.rotation.x >= -0.3f)
         {
-            head.transform.Translate(mainCam.transform.forward * 0.05f);
+            head.transform.Translate(mainCam.transform.forward * 0.1f);
         }
     }
 
@@ -98,7 +99,8 @@ public class Normal_PlayerCtrl : MonoBehaviour
     {
         if (collision.transform.tag == "Monster")
         {
-            SceneManager.LoadScene("End_Game", LoadSceneMode.Single);
+            end_Game.SetActive(true);
+            //SceneManager.LoadScene("End_Game", LoadSceneMode.Single);
         }
     }
 }

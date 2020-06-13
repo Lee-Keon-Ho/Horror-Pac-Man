@@ -11,14 +11,13 @@ public class Easy_PlayerCtrl : MonoBehaviour
     public GameObject mainCam;
     public GameObject monster;
     public GameObject clear;
+    public GameObject end_Game;
     private AudioSource audio_source;
     public AudioClip audioClip;
     private Vector3 forward;
     private float GaugeTimer;
     private int stage = 0;
     public Image CursorGaugeImage;
-    private Vector3 this_position;
-    private Vector3 this_rotate;
 
     // Start is called before the first frame update
     void Start()
@@ -90,7 +89,7 @@ public class Easy_PlayerCtrl : MonoBehaviour
         //head.transform.position = new Vector3(this.transform.position.x, 12.0f, this.transform.position.z);
         if (mainCam.transform.rotation.x <= 0.3f && mainCam.transform.rotation.x >= -0.3f)
         {
-            head.transform.Translate(mainCam.transform.forward * 0.01f);
+            head.transform.Translate(mainCam.transform.forward * 0.05f);
         }
 
     }
@@ -99,7 +98,8 @@ public class Easy_PlayerCtrl : MonoBehaviour
     {
         if (collision.transform.tag == "Monster")
         {
-            SceneManager.LoadScene("End_Game", LoadSceneMode.Single);
+            end_Game.SetActive(true);
+            //SceneManager.LoadScene("End_Game", LoadSceneMode.Single);
         }
     }
 }

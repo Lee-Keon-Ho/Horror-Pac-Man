@@ -15,6 +15,7 @@ public class empt_PlayerCtrl : MonoBehaviour
     private AudioSource audio_source;
     public AudioClip audioClip;
     private Vector3 forward;
+    public GameObject end_Game;
     int stage = 0;
     RaycastHit hit;
 
@@ -85,7 +86,7 @@ public class empt_PlayerCtrl : MonoBehaviour
     {
         if (mainCam.transform.rotation.x <= 0.5f && mainCam.transform.rotation.x >= -0.5f)
         {
-            head.transform.Translate(mainCam.transform.forward * 0.15f);
+            head.transform.Translate(mainCam.transform.forward * 0.2f);
         }
     }
 
@@ -93,7 +94,8 @@ public class empt_PlayerCtrl : MonoBehaviour
     {
         if (collision.transform.tag == "Monster")
         {
-            SceneManager.LoadScene("End_Game", LoadSceneMode.Single);
+            end_Game.SetActive(true);
+            //SceneManager.LoadScene("End_Game", LoadSceneMode.Single);
         }
     }
 }
